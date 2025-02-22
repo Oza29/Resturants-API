@@ -9,7 +9,9 @@ namespace Core.RepositoryContracts
         public Task<(List<Restaurant>,int)> GetAllMatchedResultsAsync(string searchPharse,int pageSize,int pageNumber,string? SortBy,SortDirection sortDirection);
         public Task<Restaurant?> GetRestaurantAsync(int id);
         public Task<int> AddRestaurantAsync(Restaurant resturant);
+        public Task UpdateRestaurant(Restaurant Obj);
         public Task DeleteRestaurant(Restaurant Obj);
+
         public Task SaveChanges();
     }
 }

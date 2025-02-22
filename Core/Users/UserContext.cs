@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Core.Users;
+using Domain.Entites;
+using Microsoft.AspNetCore.Http;
 
 using System.Data;
 using System.Security.Claims;
 
-namespace Core.Users
+namespace Core.users
 {
     public interface IUserContext
     {
@@ -19,20 +21,23 @@ namespace Core.Users
 
         public CurrentUser? GetCurrentUser()
         {
-            var User = _HttpContextAccessor?.HttpContext?.User;
-            if (User == null)
+            var user = _HttpContextAccessor?.HttpContext?.User;
+            if (user == null)
             {
-                throw new InvalidOperationException("User context is not presented");
+                throw new InvalidOperationException("user context is not presented");
             }
-            if (User.Identity == null|| !User.Identity.IsAuthenticated)
+            if (user.Identity == null|| !user.Identity.IsAuthenticated)
             {
                 return null;
             }
-            var userId= User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)!.Value;
-            var Email = User.FindFirst(c => c.Type == ClaimTypes.Email)!.Value;
-            var Roles = User.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value);
+            var userId= user.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)!.Value;
+            var email = user.FindFirst(c => c.Type == ClaimTypes.Email)!.Value;
+            var roles = user.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value);
+            var nationality = user.FindFirst(c => c.Type == nameof(User.Nationality))?.Value;
+            var dateOfBirthString = user.FindFirst(c => c.Type == nameof(User.DateOfBirth))?.Value;
+            var dateOfBirth= dateOfBirthString==null? (DateOnly?)null:DateOnly.ParseExact(dateOfBirthString,"yyyy-MM-dd");
 
-            return new CurrentUser(userId,Email, Roles);
+            return new CurrentUser(userId,email, roles,nationality,dateOfBirth);
             
         }
     }

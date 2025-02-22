@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Core.Restaurants.Commands.UpdateRestaurant
 {
-    public class UpdateRestaurantValidation:AbstractValidator<Restaurant>
+    public class UpdateRestaurantValidation:AbstractValidator<UpdateRestaurantCommand>
     {
        
         public UpdateRestaurantValidation()

@@ -1,14 +1,4 @@
-﻿using Domain;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Net;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core.Restaurants.Dtos
+﻿namespace Core.Restaurants.Dtos
 {
     public class CreateRestaurantDto
     {

@@ -1,17 +1,8 @@
-﻿using Core.Restaurants.Dtos;
-using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using FluentValidation;
 
 namespace Core.Restaurants.Commands.CreateRestaurant
 {
-    public class CreateRestaurantCommandValidator : AbstractValidator<CreateRestaurantDto>
+    public class CreateRestaurantCommandValidator : AbstractValidator<CreateRestaurantCommand>
     {
         private readonly List<string> validCategories = ["Italian", "Mexican", "Indian", "Japanese", "American", "Egyptian"];
         public CreateRestaurantCommandValidator()

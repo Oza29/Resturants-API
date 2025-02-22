@@ -1,4 +1,5 @@
-﻿using Domain.Entites;
+﻿using Core.users;
+using Domain.Entites;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Core.RepositoryContracts;
+using Core.users;
 using Core.Users;
 using Domain.Entites;
 using Domain.ServiceContract;

@@ -32,7 +32,6 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddScoped<RequestTimeLoggingMiddleware>();
 builder.Host.UseSerilog((context, configuration) =>

@@ -23,8 +23,8 @@ namespace Core.Restaurants.Query.GetAllRestaurants
         {
             _logger.LogInformation("getting all restaurants");
             IEnumerable<Restaurant> resturants = new List<Restaurant>();
-               var (restaurants,totalCount) = await _restaurantRepository.GetMatchedResultsAsync(request.searchPharse,
-                    request.PageSize,request.PageNumber);
+               var (restaurants,totalCount) = await _restaurantRepository.GetAllMatchedResultsAsync(request.searchPharse,
+                    request.PageSize,request.PageNumber,request.SortBy,request.SortDirection);
                 
             var restaurantsDTO = _mapper.Map<IEnumerable<RestaurantDTO>>(resturants);
            var result = new PagedResult<RestaurantDTO>(request.PageSize,request.PageNumber, totalCount,restaurantsDTO);

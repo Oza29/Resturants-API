@@ -1,4 +1,5 @@
-﻿using Core.Users;
+﻿using Core.users;
+using Core.Users;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;

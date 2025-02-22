@@ -32,6 +32,7 @@ namespace Core.Restaurants.Commands.UpdateRestaurant
             if (!_restaurantAuthorizationService.Authorize(restaurant, ResourceOperation.Update))
                 throw new ForbiddenException();
             _mapper.Map(request, restaurant);
+            await _restaurantRepository.UpdateRestaurant(restaurant);
             await _restaurantRepository.SaveChanges();
         }
     }
